@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#E2E8F0">
+
+    <!-- Preview Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/morsePreview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textColor="#D97706"
+            android:fontFamily="monospace"
+            android:text="Morse Code Preview" />
+
+        <!-- Accessible toggle buttons -->
+        <Button
+            android:id="@+id/btnToggleLetters"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="L"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_toggle_on"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Toggle letter pronunciation" />
+
+        <Button
+            android:id="@+id/btnToggleWords"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="W"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_toggle_on"
+            android:contentDescription="Toggle word pronunciation" />
+    </LinearLayout>
+
+    <!-- Help/Settings Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="#CBD5E1"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp">
+
+        <Button
+            android:id="@+id/btnHelp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1E40AF"
+            android:background="@android:drawable/btn_default"
+            android:contentDescription="Help - Learn button functions" />
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="⚙"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1E40AF"
+            android:background="@android:drawable/btn_default"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Settings" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="👆 Tap ? or ⚙"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:textColor="#475569" />
+    </LinearLayout>
+
+    <!-- NEW: Help Menu (Hidden by default) -->
+    <LinearLayout
+        android:id="@+id/helpMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F8FAFC"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📚 Tap buttons to feel &amp; hear:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/helpDot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• DOT - Sharp tap (50ms)"
+            android:textSize="14sp"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="12dp"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <Button
+            android:id="@+id/helpDash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="— DASH - Long press (500ms)"
+            android:textSize="14sp"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="12dp"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <Button
+            android:id="@+id/helpSpace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SPACE - Double bump (complete letter)"
+            android:textSize="14sp"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="12dp"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <Button
+            android:id="@+id/helpDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEL - Rapid triple pulse (erasing)"
+            android:textSize="14sp"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="12dp"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tap ? again to close"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:textColor="#64748B"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- NEW: Settings Menu (Hidden by default) -->
+    <LinearLayout
+        android:id="@+id/settingsMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F8FAFC"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚙️ Audio Speed"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/speedIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current: Normal"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="#E2E8F0"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnSpeedSlow"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Slow"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="4dp"
+                android:contentDescription="Set slow speech speed" />
+
+            <Button
+                android:id="@+id/btnSpeedNormal"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Normal"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="4dp"
+                android:contentDescription="Set normal speech speed" />
+
+            <Button
+                android:id="@+id/btnSpeedFast"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Fast"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="4dp"
+                android:contentDescription="Set fast speech speed" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tap ⚙ again to close"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:textColor="#64748B"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+
+    <!-- Main Keyboard Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- DOT and DASH Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnDot"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/button_dot"
+                android:text="•\nDOT"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:contentDescription="Dot - Quick tap" />
+
+            <Button
+                android:id="@+id/btnDash"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/button_dash"
+                android:text="—\nDASH"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:contentDescription="Dash - Medium pulse" />
+        </LinearLayout>
+
+        <!-- SPACE and DELETE Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnSpace"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="3"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/button_space"
+                android:text="SPACE"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:contentDescription="Space - Complete letter or word" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/button_delete"
+                android:text="DEL"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:contentDescription="Delete - Remove last input" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="L = Letters | W = Words | ? = Help"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textColor="#64748B" />
+    </LinearLayout>
+
+</LinearLayout>
